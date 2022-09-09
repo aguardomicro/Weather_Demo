@@ -1,0 +1,33 @@
+version: '3'
+
+services:
+  weather_project_dev:
+    container_name: weather_project_dev
+    image: cloudblueconnect/connect-extension-runner:25.0
+    command: cextrun -d
+    volumes: 
+      - .:/extension
+    env_file:
+      - .weather_project_dev.env
+
+  weather_project_bash:
+    container_name: weather_project_bash
+    image: cloudblueconnect/connect-extension-runner:25.0
+    working_dir: /extension
+    command: /bin/bash
+    stdin_open: true
+    tty: true
+    volumes:
+      - .:/extension
+    env_file:
+      - .weather_project_dev.env
+
+  weather_project_test:
+    container_name: weather_project_test
+    image: cloudblueconnect/connect-extension-runner:25.0
+    working_dir: /extension
+    command: /bin/bash -c "poetry install && poetry run pytest"
+    volumes:
+      - .:/extension
+    env_file:
+      - .weather_project_dev.env
