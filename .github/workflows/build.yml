@@ -32,6 +32,3 @@ jobs:
         pip install poetry
         poetry config virtualenvs.create false --local
         poetry install --no-root
-    - name: Testing
-      run: |
-        pytest
