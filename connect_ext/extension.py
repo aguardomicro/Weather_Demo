@@ -167,7 +167,6 @@ class Weather_projectExtension(Extension):
                                             data=json.dumps(company))
         return ProcessingResponse.done()
 
-
     def process_asset_adjustment_request(self, request):
         self.logger.info(f"Obtained request with id {request['id']}")
         return ProcessingResponse.done()
