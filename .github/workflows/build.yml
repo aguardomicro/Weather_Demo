@@ -32,9 +32,6 @@ jobs:
         pip install poetry
         poetry config virtualenvs.create false --local
         poetry install --no-root
-    - name: Linting
-      run: |
-        flake8 .
     - name: Testing
       run: |
         pytest
